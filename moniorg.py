@@ -31,7 +31,10 @@ def get_crtsh_domain(orgname):
     domains=[]
     url="https://crt.sh/?output=json&O="+orgname
     user_agent="Moniorg"
-    r=requests.get(url,headers={'User-Agent': user_agent}, timeout=50)
+    try:
+        r=requests.get(url,headers={'User-Agent': user_agent}, timeout=50)
+    except requests.exceptions.Timeout:
+        print("Timeout occurred")
     try:
         if r.status_code == 200:
             jsonn=r.json()
