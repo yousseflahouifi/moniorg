@@ -50,6 +50,29 @@ def get_crtsh_domain(orgname):
         print("error, retry please")
         exit()
 
+def get_crtsh_domain_m(orgname):
+    domains=[]
+    url="https://crt.sh/?output=json&O="+orgname
+    user_agent="Moniorg"
+    try:
+        r=requests.get(url,headers={'User-Agent': user_agent}, timeout=50)
+    except requests.exceptions.Timeout:
+        print("Timeout occurred")
+    try:
+        if r.status_code == 200:
+            jsonn=r.json()
+    #json=json.loads(r)
+            for i in jsonn:
+                domains.append(str(i["common_name"]).replace("*.",""))
+            return domains
+        else:
+            print("error, crt.sh doesnt return valid response...")
+            exit()
+    except Exception as e:
+        print("error, retry please")
+        exit()
+	
+	
 def add_new_company(company):
     company.replace(" ","+")
     if not os.path.isfile('./orgname.txt'):
@@ -62,7 +85,7 @@ def add_new_company(company):
                 sys.exit(1)
         orgnams.write(company+"\n")
     #get domains
-    response=get_crtsh_domain(company)
+    response=get_crtsh_domain_m(company)
     if response:
         with open("./out/"+company+".txt","a") as domains:
             for domain in response:
