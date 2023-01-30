@@ -85,7 +85,7 @@ def add_new_company(company):
                 sys.exit(1)
         orgnams.write(company+"\n")
     #get domains
-    response=get_crtsh_domain_m(company)
+    response=get_crtsh_domain(company)
     if response:
         with open("./out/"+company+".txt","a") as domains:
             for domain in response:
@@ -104,7 +104,7 @@ def minotor_company(company):
         print(colored("The given orgname isn't monitored , you gotta add it","red"))
         sys.exit(1)
 
-    response=get_crtsh_domain(company)
+    response=get_crtsh_domain_m(company)
     if response:
         with open("./out/"+company+"_temp.txt","a") as domains:
             for domain in response:
