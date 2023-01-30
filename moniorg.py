@@ -35,6 +35,7 @@ def get_crtsh_domain(orgname):
         r=requests.get(url,headers={'User-Agent': user_agent}, timeout=50)
     except requests.exceptions.Timeout:
         print("Timeout occurred")
+	os.system("sed -i 's|{}||g' orgname.txt".format(orgname))
     try:
         if r.status_code == 200:
             jsonn=r.json()
