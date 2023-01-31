@@ -201,7 +201,8 @@ if __name__ == '__main__':
 			if args().vps:
 				send_notification(domains)
 			else:
-				print(domains)
+				for domain in domains:
+                                    print(domain)
 		else:
 			if args().vps:
 				send_notification("No new domains found !")
