@@ -92,6 +92,9 @@ Got Nothing !
 moniorg depends on crt.sh website to find new domains and sometimes crt.sh looks like is timing out when the list of domain is huge . You just have to retry .
 
 ## Read more
+
+[Discovering domains like never before](https://medium.com/@youssefla/discovering-domains-like-never-before-moniorg-c609b38343b5)
+
 [Subdomain enumeration is cool , How about domain enumeration ? Part I](https://yousseflahouifi.github.io/posts/domain-enumeration/)  
 [Subdomain enumeration is cool , How about domain enumeration ? Part II](https://yousseflahouifi.github.io/posts/domain-enumeration-2/)
 
